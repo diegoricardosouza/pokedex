@@ -1,5 +1,7 @@
+import PokemonCard from 'components/PokemonCard'
+
 const Home = () => {
-  return <h1>teste</h1>
+  return <PokemonCard />
 }
 
 export default Home

@@ -5,6 +5,8 @@ export default {
   colors: {
     primary: '#0B0D17',
     secondary: '#D0D6F9',
+    black: '#000',
+    white: '#FFF',
     normal: '#636363',
     fighting: '',
     flying: '',
@@ -35,6 +37,7 @@ export default {
     normal: 400,
     medium: 500,
     bold: 700,
+    black: 900,
     sizes: {
       xsmall: '1.4rem',
       small: '1.6rem',
