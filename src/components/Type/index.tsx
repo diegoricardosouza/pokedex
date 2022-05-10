@@ -4,7 +4,7 @@ export type TypeProps = {
   title: string
 }
 
-const Type = ({ title = 'Grass' }: TypeProps) => {
+const Type = ({ title }: TypeProps) => {
   return (
     <S.Wrapper>
       <S.Item>{title}</S.Item>
