@@ -1,9 +1,11 @@
+import Type, { TypeProps } from 'components/Type'
 import * as S from './styles'
 
 export type PokemonCardProps = {
   title: string
   number: number
   img: string
+  types: TypeProps[]
 }
 
 const PokemonCard = () => {
@@ -17,7 +19,14 @@ const PokemonCard = () => {
         <S.Title>Bulbasaur</S.Title>
       </S.WrapperTitle>
 
-      <S.WrapperContent></S.WrapperContent>
+      <S.WrapperContent>
+        <S.WrapperTypes>
+          <Type title="Grass" />
+          <Type title="Poison" />
+        </S.WrapperTypes>
+
+        <S.WrapperImage></S.WrapperImage>
+      </S.WrapperContent>
 
       <svg
         width="75"

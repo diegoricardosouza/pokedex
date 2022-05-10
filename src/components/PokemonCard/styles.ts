@@ -29,9 +29,9 @@ export const WrapperTitle = styled.header``
 
 export const Title = styled.h2`
   ${({ theme }) => css`
-    margin: 0;
+    margin: 0 0 1rem 0;
     color: ${theme.colors.white};
-    font-size: 2.3rem;
+    font-size: 2.4rem;
     font-weight: ${theme.font.bold};
   `}
 `
@@ -48,3 +48,10 @@ export const Number = styled.div`
 `
 
 export const WrapperContent = styled.div``
+
+export const WrapperTypes = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+`
+
+export const WrapperImage = styled.div``
