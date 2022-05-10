@@ -22,7 +22,7 @@ type PokemonProps = {
 
 const PokemonCard = ({ title }: PokemonCardProps) => {
   const [pokemon, setPokemon] = useState({} as PokemonProps)
-  const [bgColor, setBgColor] = useState({} as Colors)
+  const [bgColor, setBgColor] = useState()
 
   useEffect(() => {
     const pokemonData = async () => {
