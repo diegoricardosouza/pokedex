@@ -13,7 +13,7 @@ const Home = () => {
 
   const pokemonListDefault = useCallback(async () => {
     const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=120&offset=30'
+      'https://pokeapi.co/api/v2/pokemon?limit=30&offset=0'
     )
     const body = await response.json()
 

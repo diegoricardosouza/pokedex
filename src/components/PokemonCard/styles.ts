@@ -94,6 +94,7 @@ export const Wrapper = styled.article<BackgroundColorProps>`
     position: relative;
     border-radius: 2rem;
     padding: 1.5rem 1.5rem 0 1.5rem;
+    min-height: 24.4rem;
 
     ${!!cor && wrapperModifiers[cor](theme)};
 
