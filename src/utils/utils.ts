@@ -12,5 +12,9 @@ export const AddZeros = (number: number) => {
     newNumber = `0${number}`
   }
 
+  if (number >= 100) {
+    newNumber = `${number}`
+  }
+
   return newNumber
 }

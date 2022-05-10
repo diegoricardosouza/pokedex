@@ -1,5 +1,8 @@
+import Container from 'components/Container'
 import PokemonCard from 'components/PokemonCard'
 import { useCallback, useEffect, useState } from 'react'
+
+import * as S from './styles'
 
 type PokemonProps = {
   name: string
@@ -10,7 +13,7 @@ const Home = () => {
 
   const pokemonListDefault = useCallback(async () => {
     const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0'
+      'https://pokeapi.co/api/v2/pokemon?limit=120&offset=30'
     )
     const body = await response.json()
 
@@ -22,11 +25,13 @@ const Home = () => {
   }, [pokemonListDefault])
 
   return (
-    <>
-      {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.name} title={pokemon.name} />
-      ))}
-    </>
+    <Container>
+      <S.Wrapper>
+        {pokemons.map((pokemon) => (
+          <PokemonCard key={pokemon.name} title={pokemon.name} />
+        ))}
+      </S.Wrapper>
+    </Container>
   )
 }
 
