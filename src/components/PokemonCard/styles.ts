@@ -1,5 +1,4 @@
 import styled, { css, DefaultTheme } from 'styled-components'
-import { Colors } from 'types/colors'
 
 type BackgroundColorProps = {
   cor?:

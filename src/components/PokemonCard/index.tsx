@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 import Pokebola from 'components/Pokebola'
 import Type from 'components/Type'
-import { Colors } from 'types/colors'
-import { PokemonTypeColor } from 'utils/colors'
 import { Type as TypeProps } from 'types/types'
 import { AddZeros, FirstLetterUppercase } from 'utils/utils'
 

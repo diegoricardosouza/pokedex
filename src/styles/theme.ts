@@ -1,6 +1,6 @@
 export default {
   grid: {
-    container: '111rem'
+    container: '110rem'
   },
   colors: {
     primary: '#0B0D17',
