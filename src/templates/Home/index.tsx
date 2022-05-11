@@ -13,7 +13,7 @@ const Home = () => {
 
   const pokemonListDefault = useCallback(async () => {
     const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=30&offset=0'
+      'https://pokeapi.co/api/v2/pokemon?limit=15&offset=0'
     )
     const body = await response.json()
 
@@ -27,9 +27,15 @@ const Home = () => {
   return (
     <Container>
       <S.Wrapper>
-        {pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} title={pokemon.name} />
-        ))}
+        <S.WrapperTitle>
+          <S.Title>Pokédex</S.Title>
+        </S.WrapperTitle>
+
+        <S.WrapperPokemon>
+          {pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.name} title={pokemon.name} />
+          ))}
+        </S.WrapperPokemon>
       </S.Wrapper>
     </Container>
   )

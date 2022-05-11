@@ -3,7 +3,7 @@ export default {
     container: '110rem'
   },
   colors: {
-    primary: '#0B0D17',
+    primary: '#343843',
     secondary: '#D0D6F9',
     black: '#000',
     white: '#FFF',

@@ -89,7 +89,6 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.article<BackgroundColorProps>`
   ${({ theme, cor }) => css`
-    max-width: 35rem;
     overflow: hidden;
     position: relative;
     border-radius: 2rem;
