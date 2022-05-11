@@ -1,6 +1,6 @@
 import Container from 'components/Container'
+import Loader from 'components/Loader'
 import PokemonCard from 'components/PokemonCard'
-import Spinner from 'components/Spinner'
 import { useCallback, useEffect, useState } from 'react'
 
 import * as S from './styles'
@@ -26,21 +26,23 @@ const Home = () => {
   }, [pokemonListDefault])
 
   return (
-    <Container>
-      <S.Wrapper>
-        <Spinner />
+    <>
+      <Loader isLoading />
 
-        <S.WrapperTitle>
-          <S.Title>Pokédex</S.Title>
-        </S.WrapperTitle>
+      <Container>
+        <S.Wrapper>
+          <S.WrapperTitle>
+            <S.Title>Pokédex</S.Title>
+          </S.WrapperTitle>
 
-        <S.WrapperPokemon>
-          {pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.name} title={pokemon.name} />
-          ))}
-        </S.WrapperPokemon>
-      </S.Wrapper>
-    </Container>
+          <S.WrapperPokemon>
+            {pokemons.map((pokemon) => (
+              <PokemonCard key={pokemon.name} title={pokemon.name} />
+            ))}
+          </S.WrapperPokemon>
+        </S.Wrapper>
+      </Container>
+    </>
   )
 }
 
