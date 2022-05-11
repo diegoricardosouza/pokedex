@@ -1,5 +1,6 @@
 import Container from 'components/Container'
 import PokemonCard from 'components/PokemonCard'
+import Spinner from 'components/Spinner'
 import { useCallback, useEffect, useState } from 'react'
 
 import * as S from './styles'
@@ -27,6 +28,8 @@ const Home = () => {
   return (
     <Container>
       <S.Wrapper>
+        <Spinner />
+
         <S.WrapperTitle>
           <S.Title>Pokédex</S.Title>
         </S.WrapperTitle>
