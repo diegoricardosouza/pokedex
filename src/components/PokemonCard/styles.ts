@@ -1,4 +1,6 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import { Text, Wrapper as WLoader } from 'components/Loader/styles'
+import { WrapperPokeball } from 'components/Spinner/styles'
 
 type BackgroundColorProps = {
   cor?:
@@ -108,6 +110,19 @@ export const Wrapper = styled.article<BackgroundColorProps>`
         fill: #fff;
         opacity: 0.25;
       }
+    }
+
+    ${WLoader} {
+      position: absolute;
+    }
+
+    ${Text} {
+      margin: -3rem 0 0 0;
+      font-size: 1.4rem;
+    }
+
+    ${WrapperPokeball} {
+      transform: scale(0.5);
     }
   `}
 `

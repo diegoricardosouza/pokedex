@@ -11,14 +11,16 @@ type PokemonProps = {
 
 const Home = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[]>([])
+  const [loading, setLoading] = useState(true)
 
   const pokemonListDefault = useCallback(async () => {
     const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=15&offset=0'
+      'https://pokeapi.co/api/v2/pokemon?limit=30&offset=0'
     )
     const body = await response.json()
 
     setPokemons(body.results)
+    setLoading(false)
   }, [])
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const Home = () => {
 
   return (
     <>
-      <Loader isLoading />
+      <Loader isLoading={loading} />
 
       <Container>
         <S.Wrapper>
@@ -36,9 +38,10 @@ const Home = () => {
           </S.WrapperTitle>
 
           <S.WrapperPokemon>
-            {pokemons.map((pokemon) => (
-              <PokemonCard key={pokemon.name} title={pokemon.name} />
-            ))}
+            {pokemons.length > 0 &&
+              pokemons.map((pokemon) => (
+                <PokemonCard key={pokemon.name} title={pokemon.name} />
+              ))}
           </S.WrapperPokemon>
         </S.Wrapper>
       </Container>

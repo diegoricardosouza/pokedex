@@ -7,6 +7,7 @@ import { Type as TypeProps } from 'types/types'
 import { AddZeros, FirstLetterUppercase } from 'utils/utils'
 
 import * as S from './styles'
+import Loader from 'components/Loader'
 
 export type PokemonCardProps = {
   title: string
@@ -21,21 +22,28 @@ type PokemonProps = {
 const PokemonCard = ({ title }: PokemonCardProps) => {
   const [pokemon, setPokemon] = useState({} as PokemonProps)
   const [bgColor, setBgColor] = useState()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const pokemonData = async () => {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${title.toLowerCase()}`
-      )
-      const { id, types, sprites } = await response.json()
+      try {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${title.toLowerCase()}`
+        )
+        const { id, types, sprites } = await response.json()
 
-      setBgColor(types[0].type.name)
+        setBgColor(types[0].type.name)
 
-      setPokemon({
-        id,
-        types,
-        image: sprites.other['official-artwork'].front_default
-      })
+        setPokemon({
+          id,
+          types,
+          image: sprites.other['official-artwork'].front_default
+        })
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
     }
 
     pokemonData()
@@ -43,6 +51,8 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
 
   return (
     <S.Wrapper cor={bgColor}>
+      <Loader isLoading={loading} />
+
       <S.Number>
         <span>#{AddZeros(pokemon.id)}</span>
       </S.Number>
@@ -66,7 +76,7 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
               alt={pokemon.image}
               width={300}
               height={300}
-              loading="lazy"
+              loading="eager"
               objectFit="cover"
             />
           )}
