@@ -8,6 +8,7 @@ import { AddZeros, FirstLetterUppercase } from 'utils/utils'
 
 import * as S from './styles'
 import Loader from 'components/Loader'
+import Link from 'next/link'
 
 export type PokemonCardProps = {
   title: string
@@ -53,37 +54,41 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
     <S.Wrapper cor={bgColor}>
       <Loader isLoading={loading} />
 
-      <S.Number>
-        <span>#{AddZeros(pokemon.id)}</span>
-      </S.Number>
+      <Link href="/">
+        <a>
+          <S.Number>
+            <span>#{AddZeros(pokemon.id)}</span>
+          </S.Number>
 
-      <S.WrapperTitle>
-        <S.Title>{FirstLetterUppercase(title)}</S.Title>
-      </S.WrapperTitle>
+          <S.WrapperTitle>
+            <S.Title>{FirstLetterUppercase(title)}</S.Title>
+          </S.WrapperTitle>
 
-      <S.WrapperContent>
-        <S.WrapperTypes>
-          {pokemon.types &&
-            pokemon.types.map((type, index) => (
-              <Type key={index} title={type.type.name} />
-            ))}
-        </S.WrapperTypes>
+          <S.WrapperContent>
+            <S.WrapperTypes>
+              {pokemon.types &&
+                pokemon.types.map((type, index) => (
+                  <Type key={index} title={type.type.name} />
+                ))}
+            </S.WrapperTypes>
 
-        <S.WrapperImage>
-          {pokemon.image && (
-            <Image
-              src={pokemon.image}
-              alt={pokemon.image}
-              width={300}
-              height={300}
-              loading="eager"
-              objectFit="cover"
-            />
-          )}
-        </S.WrapperImage>
-      </S.WrapperContent>
+            <S.WrapperImage>
+              {pokemon.image && (
+                <Image
+                  src={pokemon.image}
+                  alt={pokemon.image}
+                  width={300}
+                  height={300}
+                  loading="eager"
+                  objectFit="cover"
+                />
+              )}
+            </S.WrapperImage>
+          </S.WrapperContent>
 
-      <Pokebola />
+          <Pokebola />
+        </a>
+      </Link>
     </S.Wrapper>
   )
 }
