@@ -69,35 +69,37 @@ const Home = () => {
 
   return (
     <>
-      <Loader isLoading={loading} />
+      {loading ? (
+        <Loader isLoading={loading} />
+      ) : (
+        <Container>
+          <S.Wrapper>
+            <S.WrapperTitle>
+              <S.Title>Pokédex</S.Title>
 
-      <Container>
-        <S.Wrapper>
-          <S.WrapperTitle>
-            <S.Title>Pokédex</S.Title>
+              <S.InputSearchContainer>
+                <input
+                  type="text"
+                  placeholder="Qual Pokémon você está procurando?"
+                  onChange={handleChangeSearchTerm}
+                />
 
-            <S.InputSearchContainer>
-              <input
-                type="text"
-                placeholder="Qual Pokémon você está procurando?"
-                onChange={handleChangeSearchTerm}
-              />
+                <Search />
+              </S.InputSearchContainer>
+            </S.WrapperTitle>
 
-              <Search />
-            </S.InputSearchContainer>
-          </S.WrapperTitle>
-
-          <S.WrapperPokemon noResult={pokemons.length <= 0}>
-            {pokemons.length > 0 ? (
-              pokemons.map((pokemon) => (
-                <PokemonCard key={pokemon.name} title={pokemon.name} />
-              ))
-            ) : (
-              <Empty title="Oppsss, Nenhum resultado encontrado!" />
-            )}
-          </S.WrapperPokemon>
-        </S.Wrapper>
-      </Container>
+            <S.WrapperPokemon noResult={pokemons.length <= 0}>
+              {pokemons.length > 0 ? (
+                pokemons.map((pokemon) => (
+                  <PokemonCard key={pokemon.name} title={pokemon.name} />
+                ))
+              ) : (
+                <Empty title="Oppsss, Nenhum resultado encontrado!" />
+              )}
+            </S.WrapperPokemon>
+          </S.Wrapper>
+        </Container>
+      )}
     </>
   )
 }
