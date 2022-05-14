@@ -1,7 +1,8 @@
 import Container from 'components/Container'
 import Loader from 'components/Loader'
 import PokemonCard from 'components/PokemonCard'
-import { useCallback, useEffect, useState } from 'react'
+import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { Search } from '@styled-icons/material-outlined'
 
 import * as S from './styles'
 
@@ -10,22 +11,59 @@ type PokemonProps = {
 }
 
 const Home = () => {
+  const NUMBER_POKEMONS = 15
+  const NUMBER_MAX_POKEMONS_API = 10000
+
   const [pokemons, setPokemons] = useState<PokemonProps[]>([])
   const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const pokemonListDefault = useCallback(async () => {
-    const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=30&offset=0'
-    )
-    const body = await response.json()
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=${NUMBER_POKEMONS}&offset=0`
+      )
+      const body = await response.json()
 
-    setPokemons(body.results)
-    setLoading(false)
+      setPokemons(body.results)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
+  const handleSearchPokemons = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=${NUMBER_MAX_POKEMONS_API}`
+      )
+      const body = await response.json()
+
+      setSearchTerm(searchTerm.toLowerCase())
+
+      const pokemonSearch = body.results.filter(({ name }: PokemonProps) =>
+        name.includes(searchTerm)
+      )
+
+      setPokemons(pokemonSearch)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }, [searchTerm])
+
   useEffect(() => {
-    pokemonListDefault()
-  }, [pokemonListDefault])
+    if (searchTerm.length >= 2) handleSearchPokemons()
+    else pokemonListDefault()
+  }, [pokemonListDefault, searchTerm, handleSearchPokemons])
+
+  const handleChangeSearchTerm = (event: FormEvent) => {
+    const target = event.target as HTMLInputElement
+
+    setSearchTerm(target.value)
+  }
 
   return (
     <>
@@ -35,13 +73,24 @@ const Home = () => {
         <S.Wrapper>
           <S.WrapperTitle>
             <S.Title>Pokédex</S.Title>
+
+            <S.InputSearchContainer>
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={handleChangeSearchTerm}
+              />
+
+              <Search />
+            </S.InputSearchContainer>
           </S.WrapperTitle>
 
           <S.WrapperPokemon>
-            {pokemons.length > 0 &&
-              pokemons.map((pokemon) => (
-                <PokemonCard key={pokemon.name} title={pokemon.name} />
-              ))}
+            {pokemons.length > 0
+              ? pokemons.map((pokemon) => (
+                  <PokemonCard key={pokemon.name} title={pokemon.name} />
+                ))
+              : 'No results found'}
           </S.WrapperPokemon>
         </S.Wrapper>
       </Container>

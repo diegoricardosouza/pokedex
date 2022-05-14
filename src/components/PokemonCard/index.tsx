@@ -54,7 +54,7 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
     <S.Wrapper cor={bgColor}>
       <Loader isLoading={loading} />
 
-      <Link href="/">
+      <Link href={`pokemon/${title}`}>
         <a>
           <S.Number>
             <span>#{AddZeros(pokemon.id)}</span>
