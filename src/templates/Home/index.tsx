@@ -1,8 +1,10 @@
+import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { Search } from '@styled-icons/material-outlined'
+
 import Container from 'components/Container'
 import Loader from 'components/Loader'
 import PokemonCard from 'components/PokemonCard'
-import { FormEvent, useCallback, useEffect, useState } from 'react'
-import { Search } from '@styled-icons/material-outlined'
+import Empty from 'components/Empty'
 
 import * as S from './styles'
 
@@ -77,7 +79,7 @@ const Home = () => {
             <S.InputSearchContainer>
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Qual Pokémon você está procurando?"
                 onChange={handleChangeSearchTerm}
               />
 
@@ -85,12 +87,14 @@ const Home = () => {
             </S.InputSearchContainer>
           </S.WrapperTitle>
 
-          <S.WrapperPokemon>
-            {pokemons.length > 0
-              ? pokemons.map((pokemon) => (
-                  <PokemonCard key={pokemon.name} title={pokemon.name} />
-                ))
-              : 'No results found'}
+          <S.WrapperPokemon noResult={pokemons.length <= 0}>
+            {pokemons.length > 0 ? (
+              pokemons.map((pokemon) => (
+                <PokemonCard key={pokemon.name} title={pokemon.name} />
+              ))
+            ) : (
+              <Empty title="Oppsss, Nenhum resultado encontrado!" />
+            )}
           </S.WrapperPokemon>
         </S.Wrapper>
       </Container>
