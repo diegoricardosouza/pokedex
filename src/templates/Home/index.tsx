@@ -7,6 +7,7 @@ import PokemonCard from 'components/PokemonCard'
 import Empty from 'components/Empty'
 
 import * as S from './styles'
+import LoadMore from 'components/LoadMore'
 
 type PokemonProps = {
   name: string
@@ -97,6 +98,10 @@ const Home = () => {
                 <Empty title="Oppsss, Nenhum resultado encontrado!" />
               )}
             </S.WrapperPokemon>
+
+            <S.WrapperLoad>
+              <LoadMore text="Carregar mais" />
+            </S.WrapperLoad>
           </S.Wrapper>
         </Container>
       )}

@@ -89,3 +89,7 @@ export const InputSearchContainer = styled.div`
     }
   `}
 `
+
+export const WrapperLoad = styled.div`
+  margin: 2rem 0 3rem 0;
+`
