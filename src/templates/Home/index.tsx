@@ -20,6 +20,7 @@ const Home = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const [pokemonOffset, setPokemonOffset] = useState(NUMBER_POKEMONS)
 
   const pokemonListDefault = useCallback(async () => {
     try {
@@ -68,6 +69,19 @@ const Home = () => {
     setSearchTerm(target.value)
   }
 
+  const handleLoadMore = useCallback(
+    async (offset: number) => {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=${NUMBER_POKEMONS}&offset=${offset}`
+      )
+      const body = await response.json()
+
+      setPokemons((prevState) => [...prevState, ...body.results])
+      setPokemonOffset((state) => state + NUMBER_POKEMONS)
+    },
+    [NUMBER_POKEMONS]
+  )
+
   return (
     <>
       {loading ? (
@@ -99,9 +113,14 @@ const Home = () => {
               )}
             </S.WrapperPokemon>
 
-            <S.WrapperLoad>
-              <LoadMore text="Carregar mais" />
-            </S.WrapperLoad>
+            {searchTerm.length <= 2 && (
+              <S.WrapperLoad>
+                <LoadMore
+                  text="Carregar mais"
+                  onClick={() => handleLoadMore(pokemonOffset)}
+                />
+              </S.WrapperLoad>
+            )}
           </S.Wrapper>
         </Container>
       )}

@@ -2,11 +2,12 @@ import * as S from './styles'
 
 export type LoadMoreProps = {
   text?: string
+  onClick: () => void
 }
 
-const LoadMore = ({ text }: LoadMoreProps) => {
+const LoadMore = ({ text, onClick }: LoadMoreProps) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={onClick}>
       <S.Pokeball>
         <S.Button />
       </S.Pokeball>

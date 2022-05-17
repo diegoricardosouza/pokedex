@@ -14,11 +14,19 @@ const shake = keyframes`
   100% { transform: translate(0, 0) rotate(0); }
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  border: 0;
+
+  &:focus-visible {
+    outline: 0;
+  }
 `
 
 export const Text = styled.span`
