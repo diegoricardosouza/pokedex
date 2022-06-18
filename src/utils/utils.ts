@@ -1,5 +1,5 @@
 export const FirstLetterUppercase = (name: string) =>
-  name.charAt(0).toUpperCase() + name.slice(1)
+  name ? name.charAt(0).toUpperCase() + name.slice(1) : ''
 
 export const AddZeros = (number: number) => {
   let newNumber = ''

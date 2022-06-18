@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components'
 import { Text, Wrapper as WLoader } from 'components/Loader/styles'
 import { WrapperPokeball } from 'components/Spinner/styles'
 
-type BackgroundColorProps = {
+export type BackgroundColorProps = {
   cor?:
     | 'normal'
     | 'fighting'

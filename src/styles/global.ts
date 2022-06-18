@@ -24,6 +24,86 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${theme.font.sizes.xsmall};
       overflow-x: hidden;
     }
+
+    .grass {
+      background: ${theme.colors.grass};
+    }
+
+    .normal {
+      background: ${theme.colors.normal};
+    }
+
+    .shadow {
+      background: ${theme.colors.shadow};
+    }
+
+    .unknown {
+      background: ${theme.colors.unknown};
+    }
+
+    .fairy {
+      background: ${theme.colors.fairy};
+    }
+
+    .dark: {
+      background: ${theme.colors.dark};
+    }
+
+    .dragon {
+      background: ${theme.colors.dragon};
+    }
+
+    .ice {
+      background: ${theme.colors.ice};
+    }
+
+    .psychic {
+      background: ${theme.colors.psychic};
+    }
+
+    .electric {
+      background: ${theme.colors.electric};
+    }
+
+    .water {
+      background: ${theme.colors.water};
+    }
+
+    .fire {
+      background: ${theme.colors.fire};
+    }
+
+    .steel {
+      background: ${theme.colors.steel};
+    }
+
+    .ghost {
+      background: ${theme.colors.ghost};
+    }
+
+    .bug {
+      background: ${theme.colors.bug};
+    }
+
+    .rock {
+      background: ${theme.colors.rock};
+    }
+
+    .ground {
+      background: ${theme.colors.ground};
+    }
+
+    .poison {
+      background: ${theme.colors.poison};
+    }
+
+    .flying {
+      background: ${theme.colors.flying};
+    }
+
+    .fighting {
+      background: ${theme.colors.fighting};
+    }
   `}
 `
 
