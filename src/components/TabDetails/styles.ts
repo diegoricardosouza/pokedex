@@ -49,7 +49,7 @@ export const WrapperItem = styled.div`
   width: 8%;
 
   @media (max-width: 767px) {
-    width: 14%;
+    width: 20%;
   }
 `
 
@@ -68,10 +68,11 @@ export const Status = styled.div<StatsProps>`
       left: 0;
       width: ${percent}%;
       background: ${percent <= 49 ? theme.colors.red : theme.colors.green};
+      max-width: 100%;
     }
 
     @media (max-width: 767px) {
-      width: 86%;
+      width: 80%;
     }
   `}
 `
