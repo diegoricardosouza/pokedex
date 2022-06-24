@@ -5,6 +5,7 @@ import HeaderDetails from 'components/HeaderDetails'
 import TabDetails from 'components/TabDetails'
 import { Type as TypeProps } from 'types/types'
 import { AddZeros } from 'utils/utils'
+import Loader from 'components/Loader'
 
 export type AbilitiesProps = {
   ability: {
@@ -39,6 +40,7 @@ const Pokemon = () => {
 
   const [pokemon, setPokemon] = useState({} as PokemonProps)
   const [bgColor, setBgColor] = useState()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const pokemonData = async () => {
@@ -84,6 +86,8 @@ const Pokemon = () => {
         }
       } catch (error) {
         console.log(error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -92,6 +96,8 @@ const Pokemon = () => {
 
   return (
     <>
+      <Loader isLoading={loading} />
+
       <HeaderDetails
         image={pokemon.image}
         number={pokemon.number}
