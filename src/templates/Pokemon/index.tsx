@@ -1,8 +1,25 @@
-import HeaderDetails from 'components/HeaderDetails'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+
+import HeaderDetails from 'components/HeaderDetails'
+import TabDetails from 'components/TabDetails'
 import { Type as TypeProps } from 'types/types'
 import { AddZeros } from 'utils/utils'
+
+export type AbilitiesProps = {
+  ability: {
+    name: string
+  }
+}
+
+export type StatsProps = {
+  hp: number
+  attack: number
+  defense: number
+  speed: number
+  specialAttack: number
+  specialDefense: number
+}
 
 type PokemonProps = {
   id: number
@@ -11,14 +28,8 @@ type PokemonProps = {
   specie: string
   height: string
   weight: string
-  stats: {
-    hp: number
-    attack: number
-    defense: number
-    speed: number
-    specialAttack: number
-    specialDefense: number
-  }
+  stats: StatsProps
+  abilities: AbilitiesProps[]
   type: TypeProps[]
 }
 
@@ -37,8 +48,16 @@ const Pokemon = () => {
             `https://pokeapi.co/api/v2/pokemon/${name}`
           )
 
-          const { id, weight, height, stats, sprites, types, species } =
-            await response.json()
+          const {
+            id,
+            weight,
+            height,
+            stats,
+            sprites,
+            abilities,
+            types,
+            species
+          } = await response.json()
 
           setBgColor(types[0].type.name)
 
@@ -55,10 +74,11 @@ const Pokemon = () => {
               hp: stats[0].base_stat,
               attack: stats[1].base_stat,
               defense: stats[2].base_stat,
-              speed: stats[3].base_stat,
-              specialAttack: stats[4].base_stat,
-              specialDefense: stats[5].base_stat
+              specialAttack: stats[3].base_stat,
+              specialDefense: stats[4].base_stat,
+              speed: stats[5].base_stat
             },
+            abilities,
             type: types
           })
         }
@@ -78,6 +98,15 @@ const Pokemon = () => {
         title={name}
         color={bgColor}
         types={pokemon.type}
+      />
+
+      <TabDetails
+        name={name}
+        specie={pokemon.specie}
+        height={pokemon.height}
+        weight={pokemon.weight}
+        abilities={pokemon.abilities}
+        stats={pokemon.stats}
       />
     </>
   )

@@ -1,6 +1,7 @@
 export default {
   grid: {
-    container: '110rem'
+    container: '110rem',
+    containerInterna: '70rem'
   },
   colors: {
     primary: '#343843',
@@ -8,8 +9,14 @@ export default {
     gray: '#999',
     ligthGray: '#f5f5f5',
     gray100: '#959595',
+    gray200: '#d1d1d3',
+    gray300: '#36393e',
+    gray400: '#616266',
     black: '#000',
     white: '#FFF',
+    lilas: '#757ab2',
+    red: '#dd797b',
+    green: '#70d697',
     normal: '#636363',
     fighting: '#ff4d40',
     flying: '#cdc79d',

@@ -1,4 +1,4 @@
-import Container from 'components/Container'
+import ContainerInterna from 'components/ContainerInterna'
 import Pokebola from 'components/Pokebola'
 import Type from 'components/Type'
 import Link from 'next/link'
@@ -23,7 +23,7 @@ const HeaderDetails = ({
 }: HeaderDetailsProps) => {
   return (
     <S.HeaderWrapper className={color}>
-      <Container>
+      <ContainerInterna>
         <S.Back>
           <Link href="/">
             <a>
@@ -46,23 +46,27 @@ const HeaderDetails = ({
         </S.Back>
 
         <S.WrapperContainer>
-          <S.Image src={image} />
+          <S.WrapperContainerInfos>
+            <S.Image src={image} />
 
-          <S.HeaderInfos>
-            <S.Number>{number}</S.Number>
+            <S.HeaderInfos>
+              <S.Number>{number}</S.Number>
 
-            <S.WrapperTitle>
-              <S.Title>{FirstLetterUppercase(title)}</S.Title>
-              <S.WrapperTypes>
-                {types &&
-                  types.map((type, index) => (
-                    <Type key={index} title={type.type.name} />
-                  ))}
-              </S.WrapperTypes>
-            </S.WrapperTitle>
-          </S.HeaderInfos>
+              <S.WrapperTitle>
+                <S.Title>{FirstLetterUppercase(title)}</S.Title>
+                <S.WrapperTypes>
+                  {types &&
+                    types.map((type, index) => (
+                      <Type key={index} title={type.type.name} />
+                    ))}
+                </S.WrapperTypes>
+              </S.WrapperTitle>
+            </S.HeaderInfos>
+          </S.WrapperContainerInfos>
+
+          <S.TopAbas />
         </S.WrapperContainer>
-      </Container>
+      </ContainerInterna>
 
       <Pokebola />
     </S.HeaderWrapper>

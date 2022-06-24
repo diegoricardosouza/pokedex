@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.header`
     width: 20rem;
     height: 20rem;
     position: absolute;
-    left: 44%;
+    left: 45%;
     bottom: 0;
     transform: translateX(-50%);
 
@@ -30,14 +30,33 @@ export const HeaderWrapper = styled.header`
 `
 
 export const WrapperContainer = styled.div`
+  position: relative;
+`
+
+export const WrapperContainerInfos = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 `
 
+export const TopAbas = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+    border-top-left-radius: 4rem;
+    border-top-right-radius: 4rem;
+    min-height: 4rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  `}
+`
+
 export const Image = styled.img`
   max-width: 25rem;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 767px) {
     order: 2;
