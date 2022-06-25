@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.header`
   position: relative;
   padding-top: 2rem;
 
-  svg:not(.back-icon) {
+  svg:not(.back-icon, .wishlist) {
     width: 20rem;
     height: 20rem;
     position: absolute;
@@ -111,6 +111,9 @@ export const Title = styled.h1`
 
 export const Back = styled.div`
   ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+
     svg {
       width: 2.5rem;
       stroke: ${theme.colors.white};
@@ -118,6 +121,19 @@ export const Back = styled.div`
 
     @media (max-width: 767px) {
       margin: 1rem 0 2rem 0;
+    }
+  `}
+`
+
+export const WishlistButton = styled.button`
+  ${({ theme }) => css`
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    svg {
+      width: 2.5rem;
+      stroke: ${theme.colors.white};
     }
   `}
 `
