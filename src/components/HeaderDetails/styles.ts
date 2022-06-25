@@ -124,20 +124,3 @@ export const Back = styled.div`
     }
   `}
 `
-
-export const WishlistButton = styled.button`
-  ${({ theme }) => css`
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-
-    svg {
-      width: 2.5rem;
-      stroke: ${theme.colors.white};
-    }
-
-    .wishlist-active {
-      fill: ${theme.colors.white};
-    }
-  `}
-`

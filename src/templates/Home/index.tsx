@@ -8,8 +8,10 @@ import Empty from 'components/Empty'
 
 import * as S from './styles'
 import LoadMore from 'components/LoadMore'
+import Link from 'next/link'
+import { useWishlist } from 'hooks/use-wishlist'
 
-type PokemonProps = {
+export type PokemonProps = {
   name: string
 }
 
@@ -21,6 +23,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [pokemonOffset, setPokemonOffset] = useState(NUMBER_POKEMONS)
+
+  const { items } = useWishlist()
 
   const pokemonListDefault = useCallback(async () => {
     try {
@@ -89,6 +93,12 @@ const Home = () => {
       ) : (
         <Container>
           <S.Wrapper>
+            <S.WrapperWishlist>
+              <Link href="/wishlist">
+                <a>Meus Pokémons Favoritos ({items?.length})</a>
+              </Link>
+            </S.WrapperWishlist>
+
             <S.WrapperTitle>
               <S.Title>Pokédex</S.Title>
 

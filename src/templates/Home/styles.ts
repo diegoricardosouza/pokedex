@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-type WrapperPokemonProps = {
+export type WrapperPokemonProps = {
   noResult: boolean
 }
 
@@ -26,8 +26,23 @@ export const WrapperPokemon = styled.div<WrapperPokemonProps>`
   `}
 `
 
+export const WrapperWishlist = styled.div`
+  ${({ theme }) => css`
+    margin-top: 5rem;
+
+    a {
+      display: block;
+      margin: 0;
+      color: ${theme.colors.primary};
+      font-weight: ${theme.font.bold};
+      font-size: 2rem;
+      text-align: center;
+    }
+  `}
+`
+
 export const WrapperTitle = styled.div`
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 3rem;
   display: flex;
   justify-content: space-between;

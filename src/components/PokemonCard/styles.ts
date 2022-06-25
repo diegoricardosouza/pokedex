@@ -99,7 +99,7 @@ export const Wrapper = styled.article<BackgroundColorProps>`
 
     ${!!cor && wrapperModifiers[cor](theme)};
 
-    svg {
+    /* svg {
       width: 20rem;
       height: 20rem;
       position: absolute;
@@ -110,7 +110,7 @@ export const Wrapper = styled.article<BackgroundColorProps>`
         fill: #fff;
         opacity: 0.25;
       }
-    }
+    } */
 
     ${WLoader} {
       position: absolute;
@@ -125,6 +125,34 @@ export const Wrapper = styled.article<BackgroundColorProps>`
       transform: scale(0.5);
     }
   `}
+`
+
+export const WrapperPokebola = styled.div`
+  svg {
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    right: -1rem;
+    bottom: -1rem;
+
+    path {
+      fill: #fff;
+      opacity: 0.25;
+    }
+  }
+
+  ${WLoader} {
+    position: absolute;
+  }
+
+  ${Text} {
+    margin: -3rem 0 0 0;
+    font-size: 1.4rem;
+  }
+
+  ${WrapperPokeball} {
+    transform: scale(0.5);
+  }
 `
 
 export const WrapperTitle = styled.header``
@@ -164,4 +192,11 @@ export const WrapperImage = styled.div`
   z-index: 2;
   width: 60%;
   flex: 0 0 60%;
+`
+
+export const WrapperWishlistButton = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 3;
 `

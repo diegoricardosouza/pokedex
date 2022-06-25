@@ -9,6 +9,7 @@ import { AddZeros, FirstLetterUppercase } from 'utils/utils'
 import * as S from './styles'
 import Loader from 'components/Loader'
 import Link from 'next/link'
+import WishlistButton from 'components/WishlistButton'
 
 export type PokemonCardProps = {
   title: string
@@ -54,6 +55,10 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
     <S.Wrapper cor={bgColor}>
       <Loader isLoading={loading} />
 
+      <S.WrapperWishlistButton>
+        <WishlistButton title={title} />
+      </S.WrapperWishlistButton>
+
       <Link href={`pokemon/${title}`}>
         <a>
           <S.Number>
@@ -86,7 +91,9 @@ const PokemonCard = ({ title }: PokemonCardProps) => {
             </S.WrapperImage>
           </S.WrapperContent>
 
-          <Pokebola />
+          <S.WrapperPokebola>
+            <Pokebola />
+          </S.WrapperPokebola>
         </a>
       </Link>
     </S.Wrapper>

@@ -3,12 +3,12 @@ import { getStorageItem, setStorageItem } from 'utils/localStorage'
 
 const WISHLIST_KEY = 'wishlistItems'
 
-export type WishlistItem = {
-  name: string
-}
+// export type WishlistItem = {
+//   name: string
+// }
 
 export type WishlistContextData = {
-  items: WishlistItem[]
+  items: string[]
   isInWishlist: (name: string) => boolean
   addToWishlist: (name: string) => void
   removeFromWishlist: (name: string) => void
