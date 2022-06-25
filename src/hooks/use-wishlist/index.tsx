@@ -1,4 +1,5 @@
-import { createContext } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { getStorageItem, setStorageItem } from 'utils/localStorage'
 
 const WISHLIST_KEY = 'wishlistItems'
 
@@ -29,11 +30,50 @@ export type WishlistProviderProps = {
 }
 
 const WishlistProvider = ({ children }: WishlistProviderProps) => {
+  const [wishlistItems, setWishlistItem] = useState<string[]>([])
+
+  useEffect(() => {
+    const data = getStorageItem(WISHLIST_KEY)
+
+    if (data) {
+      setWishlistItem(data)
+    }
+  }, [])
+
+  const isInWishlist = (name: string) =>
+    name ? wishlistItems.includes(name) : false
+
+  const saveWishlist = (wishlistItems: string[]) => {
+    setWishlistItem(wishlistItems)
+    setStorageItem(WISHLIST_KEY, wishlistItems)
+  }
+
+  const addToWishlist = (name: string) => {
+    saveWishlist([...wishlistItems, name])
+  }
+
+  const removeFromWishlist = (name: string) => {
+    const newWishlistItems = wishlistItems.filter(
+      (itemName: string) => itemName !== name
+    )
+
+    saveWishlist(newWishlistItems)
+  }
+
   return (
-    <WishlistContext.Provider value={{ items }}>
+    <WishlistContext.Provider
+      value={{
+        items: getStorageItem(WISHLIST_KEY),
+        isInWishlist,
+        addToWishlist,
+        removeFromWishlist
+      }}
+    >
       {children}
     </WishlistContext.Provider>
   )
 }
 
-export { WishlistProvider }
+const useWishlist = () => useContext(WishlistContext)
+
+export { WishlistProvider, useWishlist }

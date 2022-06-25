@@ -135,5 +135,9 @@ export const WishlistButton = styled.button`
       width: 2.5rem;
       stroke: ${theme.colors.white};
     }
+
+    .wishlist-active {
+      fill: ${theme.colors.white};
+    }
   `}
 `
