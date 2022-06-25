@@ -95,7 +95,10 @@ const Home = () => {
           <S.Wrapper>
             <S.WrapperWishlist>
               <Link href="/wishlist">
-                <a>Meus Pokémons Favoritos ({items?.length})</a>
+                <a>
+                  Meus Pokémons Favoritos ({items?.length ? items?.length : '0'}
+                  )
+                </a>
               </Link>
             </S.WrapperWishlist>
 
